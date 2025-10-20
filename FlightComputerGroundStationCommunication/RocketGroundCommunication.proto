@@ -1,8 +1,16 @@
 syntax = "proto3";
 
+package Proto;
+
 message InFlightData
 {
-    int32 timestamp_ms = 1;
+    uint32 timestamp_ms          = 1;
+    BMP_Data bmp_data            = 2;
+    float accel_gyro_temperature = 3;
+    VectorF accel                = 4;
+    VectorF gyro                 = 5;
+    VectorF magnetometer         = 6;
+    float thermometer            = 7;
 
     message BMP_Data
     {
@@ -10,31 +18,24 @@ message InFlightData
         float pressure    = 2;
         float altitude    = 3;
     }
-    BMP_Data bmp_data = 2;
-
     message VectorF
     {
         float X = 1;
         float Y = 2;
         float Z = 3;
     }
-    float accel_gyro_temperature = 3;
-    VectorF accel                = 4;
-    VectorF gyro                 = 5;
-    VectorF magnetometer         = 6;
-    float thermometer            = 7;
 }
 
 message SwitchRadioFrequency { float new_frequency = 1; }
 
-message Error
+message DebugMessage
 {
-    int32 err_no   = 1;
-    string err_msg = 2;
+    uint32 status = 1;
+    string msg    = 2;
 }
 
 message InfoExchange
 {
-    string radio_version       = 1;
-    string proto_3_msg_version = 2;
+    uint32 radio_version       = 1;
+    uint32 proto_3_msg_version = 2;
 }

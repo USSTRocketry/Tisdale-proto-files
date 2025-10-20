@@ -1,14 +1,23 @@
 syntax = "proto3";
 
+package Proto;
+
 import "FlightComputerGroundStationCommunication/RocketGroundCommunication.proto";
 
-message Message
+message MainMessage
 {
     oneof message_type
     {
         InFlightData in_flight_data                 = 1;
         SwitchRadioFrequency switch_radio_frequency = 2;
-        Error error                                 = 3;
+        DebugMessage debug_msg                      = 3;
         InfoExchange info_exchange                  = 4;
     }
+}
+
+message LogMessage
+{
+    uint32 time_stamp        = 1;
+    uint32 severity          = 2;
+    MainMessage main_message = 3;
 }
