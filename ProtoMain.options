@@ -1,1 +1,2 @@
+Proto.MainMessage submsg_callback : true
 Proto.LogMessage proto3_singular_msgs : true
