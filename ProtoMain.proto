@@ -15,6 +15,7 @@ message MainMessage
         InfoExchange info_exchange                  = 5;
         Ack ack                                     = 6;
         Control control                             = 7;
+        CommandMessage command_msg                  = 8;
     }
 }
 
