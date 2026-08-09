@@ -72,6 +72,8 @@ enum CommandType
     COMMAND_CAMERA_OFF      = 3;
     COMMAND_START_RECORDING = 4;
     COMMAND_STOP_RECORDING  = 5;
+    COMMAND_SD_LOG_ON       = 6;
+    COMMAND_SD_LOG_OFF      = 7;
 }
 
 message CommandMessage
