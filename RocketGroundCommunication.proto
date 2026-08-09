@@ -21,6 +21,8 @@ message InFlightData
     VectorF gyro                 = 4;
     VectorF magnetometer         = 5;
     float thermometer            = 6;
+    FlightState flight_state     = 7;
+    GPS_Data gps_data            = 8;
 
     message BMP_Data
     {
@@ -33,6 +35,16 @@ message InFlightData
         float X = 1;
         float Y = 2;
         float Z = 3;
+    }
+    message GPS_Data
+    {
+        float latitude     = 1;
+        float longitude    = 2;
+        float altitude     = 3;
+        float speed        = 4;
+        float angle        = 5;
+        uint32 fix_quality = 6;
+        uint32 satellites  = 7;
     }
 }
 
@@ -51,3 +63,19 @@ message InfoExchange
 }
 
 message Ack { uint32 response_to_which_message = 1; }
+
+enum CommandType
+{
+    COMMAND_UNKNOWN         = 0;
+    COMMAND_ABORT           = 1;
+    COMMAND_CAMERA_ON       = 2;
+    COMMAND_CAMERA_OFF      = 3;
+    COMMAND_START_RECORDING = 4;
+    COMMAND_STOP_RECORDING  = 5;
+}
+
+message CommandMessage
+{
+    CommandType command = 1;
+}
+
